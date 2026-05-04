@@ -85,6 +85,7 @@
         };
 
         adjust_layer {
+            
             label = "adjust";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
