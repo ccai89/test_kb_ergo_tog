@@ -3,13 +3,12 @@
  *
  * SPDX-License-Identifier: MIT
  */
+
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 300
-#include <dt-bindings/zmk/pointing.h>
+
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define LOWER 1
@@ -26,14 +25,15 @@
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
         };
-    };	
-	
-	behaviors {
+    };
+
+    behaviors {
         mousescroll: mousescroll {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-			tap-ms = <20>;
+
+            tap-ms = <20>;
         };
     };
 
@@ -51,16 +51,18 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
->;
+&kp GRAVE   &kp N1    &kp N2     &kp N3     &kp N4    &kp N5     &kp N6    &kp N7            &kp N8             &kp N9    &kp N0    &kp MINUS
+&kp TAB     &kp Q     &kp W      &kp E      &kp R     &kp T      &kp Y     &kp U             &kp I              &kp O     &kp P     &kp EQUAL
+&kp ESC     &kp A     &kp S      &kp D      &kp F     &kp G      &kp H     &kp J             &kp K              &kp L     &kp SEMI  &kp SQT
+&kp LSHFT   &kp Z     &kp X      &kp C      &kp V     &kp B      &kp N     &kp M             &kp COMMA          &kp DOT   &kp FSLH  &kp RSHFT
+&kp K_MUTE  &trans    &trans     &trans     &trans    &kp ENTER  &kp DEL   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans    &trans    &kp HOME
+&kp BSPC    &kp LGUI  &kp SPACE  &kp LCTRL  &kp LALT  &trans     &kp BSPC  &kp LCTRL         &kp SPACE          &kp LGUI  &trans    &kp LALT
+&kp UP      &trans    &kp DOWN   &kp LEFT   &trans    &kp RIGHT  &trans    &trans            &trans             &kp LEFT  &trans    &kp RIGHT
+            >;
 
-            sensor-bindings = <&mousescroll &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
         lower_layer {
@@ -75,14 +77,14 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
->;
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -97,15 +99,16 @@
             // |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
-                        bindings = <
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
->;
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
@@ -118,15 +121,15 @@
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
             label = "adjust";
-                        bindings = <
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
->;
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
