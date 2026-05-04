@@ -3,7 +3,6 @@
   "name": "ergo_tog",
   "keyboard_name": "",
   "url": "",
-  "maintainer": "qmk",
   "layouts": {
     "LAYOUT": {
       "layout": [
