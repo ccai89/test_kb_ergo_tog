@@ -1,0 +1,12 @@
+file_format: "1"
+id: ergo_tog
+name: Ergo Tog by ccai
+type: shield
+url: https://github.com/ccai/ergo_tog
+requires: [ pro_micro ]
+features:
+  - keys
+  - encoder
+siblings:
+  - ergo_tog_left
+  - ergo_tog_right
